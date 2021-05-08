@@ -19,6 +19,8 @@ class App extends Component {
   changeMessage(newMessage) {
     this.setState({
       message: newMessage
+    }, () => {
+      console.log(this.state.message)
     })
   }
 
