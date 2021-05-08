@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
 class Child extends Component {
-  handleChangeMessage() {
-    this.props.changeMessage('Changed parent state from child!');
+  componentWillMount() {
+    console.log('C-ComponentWillMount')
+  }
+  componentWillUnmount() {
+    console.log('C-i got deleted')
+  }
+  componentWillReceiveProps(newProps) {
+    //
+    console.log('New Props: ', newProps)
   }
   render() {
     return (
       <div>
-        Message from Parent {this.props.message}
-        <button onClick={this.handleChangeMessage.bind(this)}>Change Message</button>
+        Child
       </div>
     );
   }

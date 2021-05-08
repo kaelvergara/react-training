@@ -5,33 +5,38 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      message: 'Hello'
+      show: true,
+      id: 1
     }
-    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillMount() {
+    console.log('P-ComponentWillMount')
+  }
+
+  // componentDidMount() {
+  //   console.log('P-ComponentDidMount')
+  // }
+
+  handleClick() {
+    this.setState({
+      show: !this.state.show
+    })
   }
 
   handleChange(e) {
     this.setState({
-      message: e.target.value
-    })
-  }
-
-  changeMessage(newMessage) {
-    this.setState({
-      message: newMessage
-    }, () => {
-      console.log(this.state.message)
+      id: e.target.value
     })
   }
 
   render() {
     return (
       <div>
-        Message: <input type="text" value={this.state.message} onChange={this.handleChange}/>
-        <p>
-          Your message {this.state.message}
-        </p>
-        <Child message={this.state.message} changeMessage={this.changeMessage.bind(this)}/>
+        <button type="button" onClick={this.handleClick.bind(this)} >Show/Hide</button>
+        {this.state.show && <Child id={this.state.id}/>}
+        <hr/>
+        <input type="text" value={this.state.id} onChange={this.handleChange.bind(this)} />
       </div>
     );
   }
