@@ -4,12 +4,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      message: 'Hello World!'
+      message: 'Hello'
     }
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(e) {
+    this.setState({
+      message: e.target.value
+    })
+  }
+
   render() {
     return (
-      <div>{this.state.message}</div>
+      <div>
+        Message: <input type="text" value={this.state.message} onChange={this.handleChange}/>
+        <p>
+          Your message {this.state.message}
+        </p>
+      </div>
     );
   }
 }
