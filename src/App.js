@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Child from './Child';
 
 class App extends Component {
   constructor() {
@@ -15,6 +16,12 @@ class App extends Component {
     })
   }
 
+  changeMessage(newMessage) {
+    this.setState({
+      message: newMessage
+    })
+  }
+
   render() {
     return (
       <div>
@@ -22,6 +29,7 @@ class App extends Component {
         <p>
           Your message {this.state.message}
         </p>
+        <Child message={this.state.message} changeMessage={this.changeMessage.bind(this)}/>
       </div>
     );
   }
