@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Child from './Child';
+import './app.style.css';
 
 class App extends Component {
   constructor() {
@@ -31,6 +32,8 @@ class App extends Component {
         <p>
           Your message {this.state.message}
         </p>
+        <button type="button" className="btn">button(parent)</button>
+        <hr />
         <Child message={this.state.message} changeMessage={this.changeMessage.bind(this)}/>
       </div>
     );

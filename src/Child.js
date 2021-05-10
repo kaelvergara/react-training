@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './child.style.scss';
 
 class Child extends Component {
   handleChangeMessage() {
@@ -6,9 +7,9 @@ class Child extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="child">
         Message from Parent {this.props.message}
-        <button onClick={this.handleChangeMessage.bind(this)}>Change Message</button>
+        <button onClick={this.handleChangeMessage.bind(this)}>button(child)</button>
       </div>
     );
   }
