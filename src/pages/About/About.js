@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { routes } from './route-utils';
-import {
-  BrowserRouter,
-  Switch,
-  Route
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
-class App extends Component {
+class About extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <div>
+        About
         <Switch>
-          {routes.map((route, i) => (
+          {this.props.routes.map((route, i) => (
             <Route
               key={i}
               path={route.path}
@@ -21,9 +17,9 @@ class App extends Component {
             />
           ))}
         </Switch>
-      </BrowserRouter>
+      </div>
     );
   }
 }
 
-export default App;
+export default About;

@@ -1,0 +1,20 @@
+.header {
+  height: 50px;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  div {
+    * ~ * {
+      margin-left: 16px;
+    }
+  }
+}
+
+.content {
+  height: calc(100vh - 52px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
