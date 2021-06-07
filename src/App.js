@@ -4,14 +4,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      message: 'Hello',
-      age: 24,
-      isWorkingHard: true,
-      trainor: {
-        firstName: 'Kael',
-        lastName: 'Vergara'
-      },
-      hobies: ['working', 'sleeping']
+      message: 'Hello'
     }
     this.handleChange = this.handleChange.bind(this);
   }
