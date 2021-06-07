@@ -18,9 +18,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        Message: <input type="text" value={this.state.message} onChange={this.handleChange}/>
+        Message: <input type="text" aria-label="message-input" value={this.state.message} onChange={this.handleChange}/>
         <p>
-          Your message {this.state.message}
+          Your message: {this.state.message}
         </p>
       </div>
     );
