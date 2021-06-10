@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './Login.scss';
 
 class Login extends Component {
@@ -26,7 +27,30 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submit')
+    this.setState({
+      loading: true,
+      isInvalid: false,
+      isSuccessful: false
+    })
+    axios.post('http://localhost:4000/auth', {
+      firstName: this.state.username,
+      lastName: this.state.password
+    })
+    .then((response) => {
+      this.setState({
+        authorized: true,
+        isInvalid: false,
+        isSuccessful: true,
+      })
+    })
+    .catch((error) => {
+      this.setState({
+        isInvalid: true
+      })
+    })
+    .finally(_ => {
+      this.setState({ loading: false })
+    });
   }
 
   render() {
@@ -35,7 +59,7 @@ class Login extends Component {
         <form
           className="login-content"
           onSubmit={this.handleSubmit}
-          autocomplete="off"
+          autoComplete="off"
         >
           <input
             type="text"
