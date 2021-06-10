@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import './Main.scss';
 
 class Main extends Component {
@@ -10,9 +10,9 @@ class Main extends Component {
         <nav className="header">
           <div>
             <span>React Training</span>
-            <Link to="/home">Home</Link>
-            <Link to="/registration">Registration</Link>
-            <Link to="/about">About</Link>
+            <NavLink to="/home"  activeClassName="active">Home</NavLink>
+            <NavLink to="/registration"  activeClassName="active">Registration</NavLink>
+            <NavLink to="/about"  activeClassName="active">About</NavLink>
           </div>
           <span>Logout</span>
         </nav>
