@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 import './Login.scss';
+
+import { authenticationStore } from '../store/authentication'
 
 class Login extends Component {
   constructor() {
@@ -42,6 +45,11 @@ class Login extends Component {
         isInvalid: false,
         isSuccessful: true,
       })
+
+      authenticationStore.setIsLoggedIn(true)
+      setTimeout(() => {
+        this.props.history.push('/home')
+      }, 1000)
     })
     .catch((error) => {
       this.setState({
@@ -94,4 +102,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

@@ -13,11 +13,13 @@ const CompanyProfile = lazy(() => import('./pages/About/CompanyProfile'));
 export const routes = [
   {
     path: '/login',
-    component: Login
+    component: Login,
+    isGuarded: false,
   },
   {
     path: '/',
     component: Main,
+    isGuarded: true,
     routes: [
       {
         path: '/home',
