@@ -6,12 +6,11 @@ import About from './pages/About/About';
 // import ContactUs from './pages/About/ContactUs';
 // import CompanyProfile from './pages/About/CompanyProfile';
 import Main from './pages/Main'
+import Add from './pages/Registration/Add.js';
+import Registration from './pages/Registration/Registration.js';
 
 const ContactUs = lazy(() => import('./pages/About/ContactUs'));
 const CompanyProfile = lazy(() => import('./pages/About/CompanyProfile'));
-
-
-const Registration = lazy(() => import('./pages/Registration/Registration'));
 
 export const routes = [
   {
@@ -30,11 +29,12 @@ export const routes = [
       },
       {
         path: '/registration',
-        component: () => (
-          <Suspense fallback={<div>Loading...</div>}>
-            <Registration />
-          </Suspense>
-        )
+        component: Registration,
+        exact: true,
+      },
+      {
+        path: '/registration/add',
+        component: Add
       },
       {
         path: '/about',

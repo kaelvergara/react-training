@@ -32,6 +32,7 @@ class Main extends Component {
                 render={props => (
                   <route.component {...props} routes={route.routes} />
                 )}
+                exact={route.exact ? true : false}
               />
             ))}
           </Switch>

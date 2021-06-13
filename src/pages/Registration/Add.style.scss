@@ -1,0 +1,41 @@
+.add-wrapper {
+  padding: 56px;
+
+  .form-wrapper {
+    display: flex;
+    > * {
+      flex: 1;
+    }
+    pre {
+      margin-left: 64px;
+    }
+  }
+  form {
+    .formInput {
+      margin-bottom: 24px;
+      // *:not(.option-label) {
+      //   display: block;
+      // }
+
+      .input-label {
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      input {
+        &[type="text"] {
+          display: block;
+          width:100%;
+        }
+        &[type="number"] {
+          display: block;
+          width: 30%;
+        }
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+    }
+  }
+}

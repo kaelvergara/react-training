@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Registration.style.scss';
 import axios from 'axios';
 import Table from '../../components/Table/Table';
+import { Link } from 'react-router-dom';
 
 class Registration extends Component {
   constructor() {
@@ -38,7 +39,7 @@ class Registration extends Component {
       <div className="registration-wrapper">
         <div className="table-controls">
           Registration
-          <button>Add</button>
+          <Link to="/registration/add">Add</Link>
         </div>
         <Table
           columns={columns}
