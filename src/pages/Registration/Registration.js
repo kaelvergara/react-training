@@ -1,7 +1,35 @@
 import React, { Component } from 'react';
 import './Registration.style.scss';
+import axios from 'axios';
 
 class Registration extends Component {
+  constructor() {
+    super();
+    this.state = {
+      persons: [],
+      isLoading: false,
+    }
+  }
+  componentWillMount() {
+    this.setState({
+      isLoading: true
+    })
+    axios.get('http://localhost:4000/persons')
+      .then((res) => {
+        this.setState({
+          persons: res.data
+        })
+      })
+      .catch(() => {
+
+      })
+      .finally(() => {
+        this.setState({
+          isLoading: false
+        })
+      })
+
+  }
   render() {
     return (
       <div className="registration-wrapper">
@@ -22,49 +50,31 @@ class Registration extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Tim</td>
-              <td>Duncan</td>
-              <td>18</td>
-              <td>Male</td>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>Basketball, Swimming</td>
-              
-              <td>Edit Delete</td>
-            </tr>
-            <tr>
-              <td>Tim</td>
-              <td>Duncan</td>
-              <td>18</td>
-              <td>Male</td>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>Basketball, Swimming</td>
-              
-              <td>Edit Delete</td>
-            </tr>
-            <tr>
-              <td>Tim</td>
-              <td>Duncan</td>
-              <td>18</td>
-              <td>Male</td>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>Basketball, Swimming</td>
-              
-              <td>Edit Delete</td>
-            </tr>
+            {this.state.persons.map((p, i) => {
+              return (
+                <tr key={i}>
+                  <td>{p.firstName}</td>
+                  <td>{p.lastName}</td>
+                  <td>{p.age}</td>
+                  <td>{p.gender}</td>
+                  <td>{p.isBusy}</td>
+                  <td>
+                    {p.hobbies.join(', ')}
+                  </td>
+                  <td>Edit Delete</td>
+                </tr>
+              )
+            })}
+            { this.state.isLoading &&
+              <tr>
+                <td colspan="7">
+                  <h4 className="loading-indicator">Loading...</h4>
+                </td>
+              </tr>
+            }
           </tbody>
         </table>
       </div>
-
-
-
-
     );
   }
 }

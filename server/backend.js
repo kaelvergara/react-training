@@ -15,6 +15,12 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+const persons = [
+  { firstName: 'Tim', lastName: 'Duncan', age: 18, gender: 'Male', isBusy: false, hobbies: ['basketball','swimming']},
+  { firstName: 'Tom', lastName: 'Brady', age: 42, gender: 'Male', isBusy: true, hobbies: ['football','reading']},
+  { firstName: 'Lisa', lastName: 'Leslie', age: 18, gender: 'Female', isBusy: false, hobbies: ['basketball','reading']}
+]
+
 app.post('/auth', function (req, res) {
   const { firstName, lastName } = req.body;
 
@@ -27,6 +33,13 @@ app.post('/auth', function (req, res) {
       res.status(400).send()
     });
   }
+})
+
+// persons
+app.get('/persons', function (req, res) {
+  sleep(2000).then(() => {
+    res.send(persons)
+  });
 })
 
 
