@@ -81,7 +81,31 @@ class Add extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
+    const firstName = this.state.firstName.value
+
+    // required
+    if (!firstName) {
+      this.setState({
+        firstName: {
+          ...this.state.firstName,
+          error: 'Required'
+        }
+      })
+    } else if (!/^[a-zA-Z]+$/.test(firstName)) {
+      this.setState({
+        firstName: {
+          ...this.state.firstName,
+          error: 'Please enter letters only'
+        }
+      })
+    } else {
+      this.setState({
+        firstName: {
+          ...this.state.firstName,
+          error: ''
+        }
+      })
+    }
   }
 
   render() {
@@ -97,7 +121,11 @@ class Add extends Component {
                 type="text"
                 name="firstName"
                 value={this.state.firstName.value}
-                onChange={this.handleChange}/>
+                onChange={this.handleChange}
+              />
+              { this.state.firstName.error &&
+                <span className="error">{this.state.firstName.error}</span>
+              }
             </div>
 
             <div className="formInput">
