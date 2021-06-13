@@ -7,6 +7,7 @@ import About from './pages/About/About';
 // import CompanyProfile from './pages/About/CompanyProfile';
 import Main from './pages/Main'
 import Add from './pages/Registration/Add.js';
+import Edit from './pages/Registration/Edit.js';
 import Registration from './pages/Registration/Registration.js';
 
 const ContactUs = lazy(() => import('./pages/About/ContactUs'));
@@ -35,6 +36,11 @@ export const routes = [
       {
         path: '/registration/add',
         component: Add
+      },
+
+      {
+        path: '/registration/edit/:id',
+        component: Edit
       },
       {
         path: '/about',

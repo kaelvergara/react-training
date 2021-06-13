@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Registration.style.scss';
 import axios from 'axios';
 import Table from '../../components/Table/Table';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Registration extends Component {
   constructor() {
@@ -32,6 +32,7 @@ class Registration extends Component {
       })
 
   }
+
   render() {
     const columns = ['First Name', 'Last Name', 'Age', 'Gender', 'IsBusy', 'Hobbies', '']
 
@@ -57,7 +58,10 @@ class Registration extends Component {
                 <td>
                   {p.hobbies.join(', ')}
                 </td>
-                <td>Edit Delete</td>
+                <td>
+                  <Link to={`/registration/edit/${p.id}`}>Edit</Link>
+                  Delete
+                </td>
               </tr>
             )
           })}
@@ -67,4 +71,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default withRouter(Registration);

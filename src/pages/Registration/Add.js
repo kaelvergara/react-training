@@ -112,7 +112,7 @@ class Add extends Component {
     const payload = {
       firstName: this.state.firstName.value,
       lastName: this.state.lastName.value,
-      age: this.state.lastName.value,
+      age: this.state.age.value,
       gender: this.state.gender.value,
       isBusy: this.state.isBusy.value,
       hobbies: this.state.hobbies.values
