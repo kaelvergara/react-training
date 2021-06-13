@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Registration.style.scss';
 import axios from 'axios';
+import Table from '../../components/Table/Table';
 
 class Registration extends Component {
   constructor() {
@@ -31,49 +32,35 @@ class Registration extends Component {
 
   }
   render() {
+    const columns = ['First Name', 'Last Name', 'Age', 'Gender', 'IsBusy', 'Hobbies', '']
+
     return (
       <div className="registration-wrapper">
         <div className="table-controls">
           Registration
           <button>Add</button>
         </div>
-        <table className="table">
-          <thead>
-            <tr>
-              <td>First Name</td>
-              <td>Last Name</td>
-              <td>Age</td>
-              <td>Gender</td>
-              <td>IsBusy</td>
-              <td>Hobbies</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.persons.map((p, i) => {
-              return (
-                <tr key={i}>
-                  <td>{p.firstName}</td>
-                  <td>{p.lastName}</td>
-                  <td>{p.age}</td>
-                  <td>{p.gender}</td>
-                  <td>{p.isBusy}</td>
-                  <td>
-                    {p.hobbies.join(', ')}
-                  </td>
-                  <td>Edit Delete</td>
-                </tr>
-              )
-            })}
-            { this.state.isLoading &&
-              <tr>
-                <td colspan="7">
-                  <h4 className="loading-indicator">Loading...</h4>
+        <Table
+          columns={columns}
+          rows={this.state.persons}
+          isLoading={this.state.isLoading}
+        >
+          {this.state.persons.map((p, i) => {
+            return (
+              <tr key={i}>
+                <td>{p.firstName}</td>
+                <td>{p.lastName}</td>
+                <td>{p.age}</td>
+                <td>{p.gender}</td>
+                <td>{p.isBusy}</td>
+                <td>
+                  {p.hobbies.join(', ')}
                 </td>
+                <td>Edit Delete</td>
               </tr>
-            }
-          </tbody>
-        </table>
+            )
+          })}
+        </Table>
       </div>
     );
   }

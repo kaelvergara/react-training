@@ -16,9 +16,9 @@ app.get('/', (req, res) => {
 })
 
 const persons = [
-  { firstName: 'Tim', lastName: 'Duncan', age: 18, gender: 'Male', isBusy: false, hobbies: ['basketball','swimming']},
-  { firstName: 'Tom', lastName: 'Brady', age: 42, gender: 'Male', isBusy: true, hobbies: ['football','reading']},
-  { firstName: 'Lisa', lastName: 'Leslie', age: 18, gender: 'Female', isBusy: false, hobbies: ['basketball','reading']}
+  { id: 1, firstName: 'Tim', lastName: 'Duncan', age: 18, gender: 'Male', isBusy: false, hobbies: ['basketball','swimming']},
+  { id: 2, firstName: 'Tom', lastName: 'Brady', age: 42, gender: 'Male', isBusy: true, hobbies: ['football','reading']},
+  { id: 3, firstName: 'Lisa', lastName: 'Leslie', age: 18, gender: 'Female', isBusy: false, hobbies: ['basketball','reading']}
 ]
 
 app.post('/auth', function (req, res) {

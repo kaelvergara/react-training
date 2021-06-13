@@ -6,23 +6,4 @@
         justify-content: space-between;
         padding: 8px 0;
     }
-    .table {
-        width: 100%;
-        border-spacing: 0;
-        border: 1px solid gray;
-
-        td {
-            padding: 12px 16px;
-        }
-
-        thead {
-            td {
-                border-bottom: 1px solid gray;
-            }
-        }
-
-        .loading-indicator {
-          text-align: center;
-        }
-    }
 }
