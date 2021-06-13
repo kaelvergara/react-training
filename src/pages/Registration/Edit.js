@@ -123,7 +123,7 @@ class Edit extends Component {
     this.setState({
       isLoading: true
     })
-    axios.post(`http://localhost:4000/persons/${id}`, payload)
+    axios.put(`http://localhost:4000/persons/${id}`, payload)
       .then(() => {
         alert('successfully updated')
         this.props.history.push('/registration')
@@ -171,11 +171,6 @@ class Edit extends Component {
     })
     .catch(() => {
 
-    })
-    .finally(() => {
-      // this.setState({
-      //   isLoading: false
-      // })
     })
   }
 

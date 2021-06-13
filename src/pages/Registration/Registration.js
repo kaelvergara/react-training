@@ -11,11 +11,17 @@ class Registration extends Component {
       persons: [],
       isLoading: false,
     }
+    this.retrieveData = this.retrieveData.bind(this);
   }
   componentWillMount() {
     this.setState({
       isLoading: true
     })
+
+    this.retrieveData();
+  }
+
+  retrieveData() {
     axios.get('http://localhost:4000/persons')
       .then((res) => {
         this.setState({
@@ -30,7 +36,22 @@ class Registration extends Component {
           isLoading: false
         })
       })
+  }
 
+  onDelete(id) {
+    axios.delete(`http://localhost:4000/persons/${id}`)
+      .then((res) => {
+        alert('successfully deleted!')
+        this.retrieveData();
+      })
+      .catch(() => {
+
+      })
+      .finally(() => {
+        this.setState({
+          isLoading: false
+        })
+      })
   }
 
   render() {
@@ -60,7 +81,12 @@ class Registration extends Component {
                 </td>
                 <td>
                   <Link to={`/registration/edit/${p.id}`}>Edit</Link>
-                  Delete
+                  <span
+                    style={{marginLeft: '8px', cursor: 'pointer'}}
+                    onClick={() => this.onDelete(p.id)}
+                  >
+                    Delete
+                  </span>
                 </td>
               </tr>
             )
