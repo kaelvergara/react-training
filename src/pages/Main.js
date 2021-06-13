@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import './Main.scss';
+import { withRouter } from 'react-router-dom'
+import { authenticationStore } from '../store/authentication'
 
 class Main extends Component {
+
+  logout() {
+    authenticationStore.setIsLoggedIn(false)
+    this.props.history.push('/login')
+  }
 
   render() {
     return (
@@ -14,7 +21,7 @@ class Main extends Component {
             <NavLink to="/registration"  activeClassName="active">Registration</NavLink>
             <NavLink to="/about"  activeClassName="active">About</NavLink>
           </div>
-          <span>Logout</span>
+          <span onClick={this.logout.bind(this)} style={{cursor: 'pointer'}}>Logout</span>
         </nav>
         <div className="content">
           <Switch>
@@ -34,4 +41,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withRouter(Main);
