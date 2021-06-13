@@ -57,7 +57,9 @@ class Registration extends Component {
                   <td>{p.lastName}</td>
                   <td>{p.age}</td>
                   <td>{p.gender}</td>
-                  <td>{p.isBusy}</td>
+                  <td>
+                    <input type="checkbox" checked={p.isBusy} />
+                  </td>
                   <td>
                     {p.hobbies.join(', ')}
                   </td>
