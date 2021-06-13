@@ -1,4 +1,4 @@
-import {observable, autorun, action} from "mobx";
+import {observable, action} from "mobx";
 
 export const authenticationStore = observable({
   // isloggedIn: localStorage ? localStorage.getItem('isLoggedIn') : true,
@@ -6,6 +6,11 @@ export const authenticationStore = observable({
   // action:
   setIsLoggedIn: action(function(isloggedIn) {
     this.isloggedIn = isloggedIn;
-    localStorage.setItem('isLoggedIn', isloggedIn)
+    if (isloggedIn) {
+      localStorage.setItem('isLoggedIn', isloggedIn)
+    } else {
+      localStorage.removeItem('isLoggedIn')
+    }
+
   })
 });
