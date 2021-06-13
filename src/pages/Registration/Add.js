@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Add.style.scss'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import axios from 'axios'
 
 class Add extends Component {
   constructor() {
@@ -30,6 +31,7 @@ class Add extends Component {
         values: ['Basketball', 'Swimming'],
         error: ''
       },
+      isLoading: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGenderChange = this.handleGenderChange.bind(this)
@@ -106,6 +108,32 @@ class Add extends Component {
         }
       })
     }
+
+    const payload = {
+      firstName: this.state.firstName.value,
+      lastName: this.state.lastName.value,
+      age: this.state.lastName.value,
+      gender: this.state.gender.value,
+      isBusy: this.state.isBusy.value,
+      hobbies: this.state.hobbies.values
+    }
+
+    this.setState({
+      isLoading: true
+    })
+    axios.post('http://localhost:4000/persons', payload)
+      .then(() => {
+        alert('successfully added')
+        this.props.history.push('/registration')
+      })
+      .catch(() => {
+
+      })
+      .finally(() => {
+        this.setState({
+          isLoading: false
+        })
+      })
   }
 
   render() {
@@ -232,4 +260,4 @@ class Add extends Component {
   }
 }
 
-export default Add;
+export default withRouter(Add);

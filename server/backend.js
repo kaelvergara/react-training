@@ -35,10 +35,18 @@ app.post('/auth', function (req, res) {
   }
 })
 
-// persons
+// GET persons
 app.get('/persons', function (req, res) {
   sleep(2000).then(() => {
     res.send(persons)
+  });
+})
+
+// POST persons
+app.post('/persons', function (req, res) {
+  persons.push(req.body)
+  sleep(2000).then(() => {
+    res.send('OK')
   });
 })
 
