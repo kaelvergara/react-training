@@ -10,6 +10,9 @@ import Main from './pages/Main'
 const ContactUs = lazy(() => import('./pages/About/ContactUs'));
 const CompanyProfile = lazy(() => import('./pages/About/CompanyProfile'));
 
+
+const Registration = lazy(() => import('./pages/Registration/Registration'));
+
 export const routes = [
   {
     path: '/login',
@@ -24,6 +27,14 @@ export const routes = [
       {
         path: '/home',
         component: Home
+      },
+      {
+        path: '/registration',
+        component: () => (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Registration />
+          </Suspense>
+        )
       },
       {
         path: '/about',
